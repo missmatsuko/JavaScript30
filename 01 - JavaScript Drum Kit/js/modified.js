@@ -1,3 +1,7 @@
+/*
+* letter: single letter, uppercase; letter part of keypress code; used as audio and button identifier
+* start: boolean; set true to start playing audio
+*/
 function play(letter, start) {
   const audio = document.querySelector(`audio[data-key="${letter}"]`);
   const key = document.querySelector(`.key[data-key="${letter}"]`);
@@ -12,7 +16,7 @@ function play(letter, start) {
   }
 }
 
-// Enable interacting with buttons to activate drumkit sounds
+// Enable interacting with buttons (clicking or tab/enter) to activate drumkit sounds
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => key.addEventListener('click', function(){
   const letter = this.dataset.key;
@@ -25,7 +29,7 @@ window.addEventListener('keypress', function(e){
   play(letter, true);
 });
 
-// Add 'audio end' event listener to audio to remove playing class
+// Remove playing class when audio finishes playing
 const audios = document.querySelectorAll('audio');
 audios.forEach(audio => audio.addEventListener('ended', function(){
   const letter = this.dataset.key;
