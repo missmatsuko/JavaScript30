@@ -52,6 +52,13 @@ function setHour(hour) {
   hourHand.style.transform = `rotate(${hourDegrees}deg)`;
 }
 
+function formatNumberForTime(number) {
+  if(number < 10) {
+    return '0' + number;
+  }
+  return number;
+}
+
 function setAnalogClock(hour,minute,second) {
   setHour(hour);
   setMinute(minute);
@@ -59,7 +66,7 @@ function setAnalogClock(hour,minute,second) {
 }
 
 function setDigitalClock(hour,minute,second) {
-  const newTime = `${hour}:${minute}:${second}`;
+  const newTime = `${formatNumberForTime(hour)}:${formatNumberForTime(minute)}:${formatNumberForTime(second)}`;
   digitalClock.innerHTML = newTime;
 }
 
