@@ -30,9 +30,9 @@ body {
   height: 45%;
   background: white;
   position: absolute;
-  top: 50%;
+  bottom: 50%;
   left: 50%;
-  transform-origin: center top;
+  transform-origin: center bottom;
   transition: 0.05s;
   transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }
