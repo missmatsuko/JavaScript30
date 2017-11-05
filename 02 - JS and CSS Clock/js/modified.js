@@ -17,52 +17,41 @@ function setTime() {
   setDigitalClock(hour,minute,second);
 }
 
-function setSecond(second) {
-
-  if(previousSecond == second) {
-    return;
-  }else {
-    previousSecond = second;
-  }
-
-  const secondDegrees = ((second / 60) * 360);
-  secondHand.style.transform = `rotate(${secondDegrees}deg)`;
-}
-
-function setMinute(minute) {
-  if(previousMinute == minute) {
-    return;
-  }else {
-    previousMinute = minute;
-  }
-
-  const minuteDegrees = ((minute / 60) * 360);
-  minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
-}
-
-function setHour(hour) {
-
-  if(previousHour == hour) {
-    return;
-  }else {
-    previousHour = hour;
-  }
-
-  const hourDegrees = ((hour / 12) * 360);
-  hourHand.style.transform = `rotate(${hourDegrees}deg)`;
-}
-
+// Formats numbers with length of 1 to have leading 0,
+// otherwise just return the number
 function formatNumberForTime(number) {
-  if(number < 10) {
+  if(number.toString().length == 1) {
     return '0' + number;
   }
   return number;
 }
 
+// Check if current value matches previous value
+function matchesPrevious(current,previous) {
+  if(previous == current) {
+    return true;
+  }
+  return false;
+}
+
 function setAnalogClock(hour,minute,second) {
-  setHour(hour);
-  setMinute(minute);
-  setSecond(second);
+  if(!matchesPrevious(hour,previousHour)) {
+    previousHour = hour;
+    const hourDegrees = ((hour / 12) * 360);
+    hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+  }
+
+  if(!matchesPrevious(minute,previousMinute)) {
+    previousMinute = minute;
+    const minuteDegrees = ((minute / 60) * 360);
+    minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+  }
+
+  if(!matchesPrevious(second,previousSecond)) {
+    previousSecond = second;
+    const secondDegrees = ((second / 60) * 360);
+    secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+  }
 }
 
 function setDigitalClock(hour,minute,second) {

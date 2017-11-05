@@ -9,4 +9,5 @@ Functional analog clock.
 - [x] Adjust the styling instead of adding 90(deg) in JS
 - [ ] Fix "jump" in animation when hand gets to 12 o'clock
 - [x] Add text value of time for accessibility
-- [ ] Only change transform/content when it is not the same as previous
+- [x] Only change transform/content when it is not the same as previous
+- [ ] Remove repetitive parts in JS
