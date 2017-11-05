@@ -7,7 +7,7 @@ Functional analog clock.
 - [ ] ~~Style clock so it has numbers and lines?~~ Decided against it because I don't want to spend time making assets.
 - [x] Make JS variable names more consistent (i.e. plural/singular, abbreviations)
 - [x] Adjust the styling instead of adding 90(deg) in JS
-- [ ] Fix "jump" in animation when hand gets to 12 o'clock
+- [x] Fix "jump" in animation when hand gets to 12 o'clock (kind of cheated - just removed transition because I didn't think it was adding much effect anyways)
 - [x] Add text value of time for accessibility
 - [x] Only change transform/content when it is not the same as previous
 - [ ] Remove repetitive parts in JS
