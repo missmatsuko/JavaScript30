@@ -8,7 +8,12 @@ function play(letter, start) {
 
   if (!audio || !key) return;
 
-  key.classList.toggle('playing', start);
+  key.classList.remove('playing');
+
+  setTimeout(function() {
+      key.classList.toggle('playing', start);
+    }
+  );
 
   if(start) {
     audio.currentTime = 0;
