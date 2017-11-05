@@ -13,4 +13,4 @@ Functional analog clock.
 - [ ] Remove repetitive parts in JS
 
 ## Things I learned:
-I don't think I really learned any new things from this day. Half the tutorial was focusses on the CSS part. I practiced my skills by separating style and logic more from the original, and making the styles more useful (e.g. having different length clock hands). I still think using dates/times in JS is a bitch without a library like Moment.js, although that would be overkill for this project.
+I don't think I really learned any new things from this day. Half the tutorial was focussed on the CSS part. I practiced my skills by separating style and logic more from the original, and making the styles more useful (e.g. having different length clock hands). I still think using dates/times in JS is a bitch without a library like Moment.js, although that would be overkill for this project.
