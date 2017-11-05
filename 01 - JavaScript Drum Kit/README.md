@@ -1,4 +1,4 @@
-# 01 - JavaScript Drum Kit
+# 01 - JS Drum Kit
 Drum sounds are played upon user interaction.
 
 ## Changes made from original:
