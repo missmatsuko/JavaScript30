@@ -12,6 +12,7 @@ Drum sounds are played upon user interaction.
 ## Things I learned:
 - Cannot trigger an element to be `active` with JS
 - `transitionend` event exists
+- Some ES6 syntax
 - Reinforce some understanding about the differences in `keypress` instead of `keydown`:
   - `keypress` doesn't trigger for keys that don't produce a character
   - `keycode` and `code` respectively, the former is a numerical code (e.g. "70") and the latter is a readable one (e.g. "KeyF")
