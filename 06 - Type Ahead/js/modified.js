@@ -27,8 +27,19 @@ function displayMatches() {
 
   const html = matchArray.map(place => {
     const regex = new RegExp(this.value, 'gi');
-    const cityName = place.city.replace(regex, highlightWrap(this.value));
-    const stateName = place.state.replace(regex, highlightWrap(this.value));
+
+    /* Bart's stuff starts */
+    const cityMatch = place.city.match(regex);
+    const stateMatch = place.state.match(regex);
+    let cityName = place.city;
+    let stateName = place.state;
+    if (cityMatch) {
+      cityName = place.city.replace(cityMatch[0], highlightWrap(cityMatch[0]));
+    }
+    if (stateMatch) {
+      stateName = place.state.replace(stateMatch[0], highlightWrap(stateMatch[0]));
+    }
+    /* Bart's stuff ends */
 
     return `
       <li>
@@ -43,12 +54,8 @@ function displayMatches() {
 
 /* Main */
 fetch(endpoint)
-  .then(
-    blob => blob.json()
-  )
-  .then(
-    data => cities.push(...data)
-  );
+.then(blob => blob.json())
+.then(data => cities.push(...data));
 
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
