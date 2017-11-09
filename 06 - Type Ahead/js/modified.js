@@ -1,14 +1,19 @@
+/* Variables */
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
 const cities = [];
 
-fetch(endpoint)
-  .then(
-    blob => blob.json()
-  )
-  .then(
-    data => cities.push(...data)
-  );
+/* Functions */
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function highlightWrap(text) {
+  return `<span class='hl'>${text}</span>`;
+}
 
 function findMatches(wordToMatch, citiesArray) {
   return cities.filter(place => {
@@ -19,10 +24,11 @@ function findMatches(wordToMatch, citiesArray) {
 
 function displayMatches() {
   const matchArray = findMatches(this.value, cities);
+
   const html = matchArray.map(place => {
     const regex = new RegExp(this.value, 'gi');
-    const cityName = place.city.replace(regex, `<span class='hl'>${this.value}</span>`);
-    const stateName = place.state.replace(regex, `<span class='hl'>${this.value}</span>`);
+    const cityName = place.city.replace(regex, highlightWrap(this.value));
+    const stateName = place.state.replace(regex, highlightWrap(this.value));
 
     return `
       <li>
@@ -35,12 +41,14 @@ function displayMatches() {
   suggestions.innerHTML = html;
 }
 
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
-
-const searchInput = document.querySelector('.search');
-const suggestions = document.querySelector('.suggestions');
+/* Main */
+fetch(endpoint)
+  .then(
+    blob => blob.json()
+  )
+  .then(
+    data => cities.push(...data)
+  );
 
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
