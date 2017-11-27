@@ -7,5 +7,6 @@ Slide in image elements by scrolling the page.
 - [x] Make variables for repeated values
 - [x] Use `classList.toggle` instead of `add/remove`
 - [x] Use `getBoundingClientRect` instead of calculating both `window.scrollY` and image dimensions.
+- [ ] Use a different debounce function that has a minimum call value (lodash?)
 
 ## Things I learned:
