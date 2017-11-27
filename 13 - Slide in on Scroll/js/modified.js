@@ -1,5 +1,5 @@
-const activeClass = 'active';
-const sliderImages = document.querySelectorAll('.slide-in');
+const activeClass = 'active',
+      sliderImages = document.querySelectorAll('.slide-in');
 
 function debounce(func, wait = 20, immediate = true) {
   var timeout;
@@ -17,17 +17,15 @@ function debounce(func, wait = 20, immediate = true) {
 }
 
 function checkSlide(e) {
-  const windowScrollY = window.scrollY;
   const windowInnerHeight = window.innerHeight;
 
   sliderImages.forEach(sliderImage => {
-    const imageHeight = sliderImage.height;
-    const imageTop = sliderImage.offsetTop;
-    const imageBottom = sliderImage.offsetTop + imageHeight;
-
-    const slideInAt = (windowScrollY + windowInnerHeight) - (imageHeight / 2);
-    const isHalfShown = slideInAt > imageTop;
-    const isNotScrolledPast = windowScrollY < imageBottom;
+    const imageRect = sliderImage.getBoundingClientRect(),
+          imageTop = imageRect.top,
+          imageBottom = imageRect.bottom,
+          imageHeight = imageRect.height,
+          isHalfShown = ((imageTop + (imageHeight / 2)) < windowInnerHeight),
+          isNotScrolledPast = imageBottom > 0;
 
     sliderImage.classList.toggle(activeClass, isHalfShown && isNotScrolledPast);
   });
