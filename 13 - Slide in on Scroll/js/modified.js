@@ -23,7 +23,7 @@ function checkSlide(e) {
     const imageRect = sliderImage.getBoundingClientRect(),
           imageBottom = imageRect.bottom,
           imageHeight = imageRect.height,
-          isHalfShown = ((imageBottom - (imageHeight / 2)) < windowInnerHeight),
+          isHalfShown = (imageBottom - (imageHeight / 2)) < windowInnerHeight,
           isNotScrolledPast = imageBottom > 0;
 
     sliderImage.classList.toggle(activeClass, isHalfShown && isNotScrolledPast);
