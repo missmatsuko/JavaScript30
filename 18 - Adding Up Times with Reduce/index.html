@@ -187,17 +187,16 @@
   const SECONDS_PER_HOUR = MINUTES_PER_HOUR * SECONDS_PER_MINUTE;
 
   const timeNodes = document.querySelectorAll('[data-time]');
-  const totalSeconds =
-    Array.from(timeNodes)
-    .map(node => node.dataset.time)
-    .map(timeCode => {
-      const [mins, secs] = timeCode.split(':').map(parseFloat);
-      const timeInSeconds = mins * SECONDS_PER_MINUTE + secs;
-      return timeInSeconds;
-    })
-    .reduce((total, timeInSeconds) => (total + timeInSeconds));
 
-  const formattedDuration = formatDuration(totalSeconds);
+  const totalDurationInSeconds =
+    Array.from(timeNodes)
+      .reduce((totalSeconds, node) => {
+        const [m, s] = node.dataset.time.split(':').map(parseFloat);
+        const seconds = m * SECONDS_PER_MINUTE + s;
+        return totalSeconds + seconds;
+      }, 0);
+
+  const totalDurationFormatted = formatDuration(totalDurationInSeconds);
 
   function formatDuration(durationInSeconds) {
     let secondsLeft = durationInSeconds;
@@ -213,8 +212,8 @@
     return `${hours} hours, ${minutes} minutes, ${seconds} seconds`;
   }
 
-  console.log("Duration in Seconds:", totalSeconds);
-  console.log("Formatted Duration:", formattedDuration);
+  console.log("Duration in Seconds:", totalDurationInSeconds);
+  console.log("Formatted Duration:", totalDurationFormatted);
 
 </script>
 </body>
