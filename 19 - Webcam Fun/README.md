@@ -2,7 +2,7 @@
 
 ## Changes made from original:
 - [x] Modify file structure so that it's a bit more organized
-- [ ] Cleaner way to write effect functions?
+- [x] Cleaner way to write effect functions?
 - [ ] Move value checked for `greenScreen` filter out of `paintToCanvas` (it's running every 50ms)
 - [ ] Create buttons to toggle between existing filters
 - [ ] Create new filters (suggested in video)

@@ -1,3 +1,11 @@
+const CHANNELS = 4;
+
+// Num for each channel
+const RED = 0;
+const GREEN = 1;
+const BLUE = 2;
+const ALPHA = 3;
+
 const video = document.querySelector('.player');
 const canvas = document.querySelector('.photo');
 const ctx = canvas.getContext('2d');
@@ -31,7 +39,7 @@ function paintToCanvas() {
     //pixels = redEffect(pixels);
     //pixels = RGBSplit(pixels);
     //ctx.globalAlpha = 0.8;
-    pixels = greenScreen(pixels);
+    //pixels = greenScreen(pixels);
     ctx.putImageData(pixels, 0, 0);
 
   }, 50);
@@ -52,20 +60,20 @@ function takePhoto() {
 }
 
 function redEffect(pixels) {
-  for(let i = 0; i < pixels.data.length; i+=4) {
-    pixels.data[i + 0] = pixels.data[i + 0] + 200; // RED
-    pixels.data[i + 1] = pixels.data[i + 1] - 50; // GREEN
-    pixels.data[i + 2] = pixels.data[i + 2] * 0.5; // BLUE
+  for(let i = 0; i < pixels.data.length; i += CHANNELS) {
+    pixels.data[RED + i] += 200;
+    pixels.data[GREEN + i] -= 50;
+    pixels.data[BLUE + i] *= 0.5;
   }
 
   return pixels;
 }
 
 function RGBSplit(pixels) {
-  for(let i = 0; i < pixels.data.length; i+=4) {
-    pixels.data[i - 500] = pixels.data[i + 0]; // RED
-    pixels.data[i + 300] = pixels.data[i + 1]; // GREEN
-    pixels.data[i - 550] = pixels.data[i + 2] * 0.5; // BLUE
+  for(let i = 0; i < pixels.data.length; i += CHANNELS) {
+    pixels.data[i - 500] = pixels.data[RED + i];
+    pixels.data[i + 300] = pixels.data[GREEN + i];
+    pixels.data[i - 550] = pixels.data[BLUE + i];
   }
 
   return pixels;
