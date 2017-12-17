@@ -1,4 +1,5 @@
 # 19 - Webcam Fun
+Apply a variety of filters from a local webcam stream and save snapshots.
 
 ## Changes made from original:
 - [x] Modify file structure so that it's a bit more organized
