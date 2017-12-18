@@ -7,4 +7,4 @@ Transcribe speech.
 
 ## Things I learned:
 - There is native speech detection in JS, without needing any external libraries (although it's currently only available on Chrome and mobile Firefox)
-- How to use the speech detection feature
+- How to use the `SpeechRecognition` API

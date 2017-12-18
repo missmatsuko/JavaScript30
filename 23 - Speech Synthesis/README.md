@@ -7,5 +7,5 @@
 
 ## Things I learned:
 - There's native speech synthesis functionality in browsers, and it's supported by most modern browsers.
-- How to use the speech synthesis API
+- How to use the `SpeechSynthesis` API
 - That foreign voices will still read English, with an accent. I expected it to just be really buggy/bad.
