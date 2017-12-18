@@ -3,43 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <title>Understanding JavaScript's Capture</title>
-</head>
-<body class="bod">
 
-  <div class="one">
-    <div class="two">
-      <div class="three">
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+
+    .div {
+      width:100%;
+      padding:100px;
+    }
+
+    .div-1 {
+      background: thistle;
+    }
+
+    .div-2 {
+      background:mistyrose;
+    }
+
+    .div-3 {
+      background:coral;
+    }
+  </style>
+</head>
+
+<body class="body">
+
+  <div class="div div-1">
+    <div class="div div-2">
+      <div class="div div-3">
       </div>
     </div>
   </div>
 
-<style>
-  html {
-    box-sizing: border-box;
-  }
-  *, *:before, *:after { box-sizing: inherit; }
+  <button>Click Me</button>
 
-  div {
-    width:100%;
-    padding:100px;
-  }
+  <script>
+    const divs = document.querySelectorAll('.div');
+    const button = document.querySelector('button');
 
-  .one {
-    background: thistle;
-  }
+    function logText(e) {
+      // e.stopPropagation();
+      console.log(this.classList.value);
+    }
 
-  .two {
-    background:mistyrose;
-  }
+    divs.forEach(div => div.addEventListener('click',
+      logText, {
+        capture: true,
+      }
+    ));
 
-  .three {
-    background:coral;
-  }
-</style>
+    button.addEventListener('click', () => {
+      console.log('Clicked!');
+    }, {
+      once: true,
+    });
+  </script>
 
-<button></button>
-<script>
-
-</script>
 </body>
 </html>
