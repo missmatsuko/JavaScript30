@@ -20,12 +20,12 @@ h2 {
   padding-top: .8em;
 }
 
-nav {
+.nav {
   position: relative;
   perspective: 600px;
 }
 
-.cool > li > a {
+.nav__list__item > a {
   color: yellow;
   text-decoration: none;
   font-size: 20px;
@@ -44,7 +44,7 @@ nav ul {
   justify-content: center;
 }
 
-.cool > li {
+.nav__list__item {
   position: relative;
   display:flex;
   justify-content: center;
